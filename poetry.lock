@@ -2721,7 +2721,11 @@ files = [
 ]
 
 [package.dependencies]
-numpy = {version = ">=1.22.4,<2", markers = "python_version < \"3.11\""}
+numpy = [
+    {version = ">=1.22.4,<2", markers = "python_version < \"3.11\""},
+    {version = ">=1.23.2,<2", markers = "python_version == \"3.11\""},
+    {version = ">=1.26.0,<2", markers = "python_version >= \"3.12\""},
+]
 python-dateutil = ">=2.8.2"
 pytz = ">=2020.1"
 tzdata = ">=2022.1"
@@ -3241,6 +3245,7 @@ files = [
 
 [package.dependencies]
 cffi = ">=1.16.0"
+setuptools = {version = "*", markers = "python_version >= \"3.12\""}
 
 [[package]]
 name = "pygments"
@@ -4387,5 +4392,5 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 
 [metadata]
 lock-version = "2.0"
-python-versions = "~3.10"
-content-hash = "f842bd2366d1798e09b5ba98dcca1284407a4321a557d4c17797c24e3b380eb7"
+python-versions = "^3.10"
+content-hash = "b1988d4e80a6b75bb08ac0036a73ac549122d936fa867ba5586378eeba7ca94b"
