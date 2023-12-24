@@ -1,3 +1,4 @@
+import mlflow
 import torch
 import torchvision
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
@@ -100,13 +101,28 @@ class Fitter(object):
 
                             total += len(labels)
 
+                    train_loss = train_loss.detach().cpu().numpy()
+                    test_loss = test_loss.detach().cpu().numpy()
+                    accuracy = accuracy * 100 / total
+                    precision = precision * 100 / total
+                    recall = recall * 100 / total
+                    f1 = f1 * 100 / total
+
                     iteration_list.append(count)
-                    train_losses.append(train_loss.detach().cpu().numpy())
-                    test_losses.append(test_loss.detach().cpu().numpy())
-                    accuracy_scores.append(accuracy * 100 / total)
-                    precision_scores.append(precision * 100 / total)
-                    recall_scores.append(recall * 100 / total)
-                    f1_scores.append(f1 * 100 / total)
+                    train_losses.append(train_loss)
+                    test_losses.append(test_loss)
+                    accuracy_scores.append(accuracy)
+                    precision_scores.append(precision)
+                    recall_scores.append(recall)
+                    f1_scores.append(f1)
+
+                    if self.logging:
+                        mlflow.log_metric("train_loss", train_loss, step=count)
+                        mlflow.log_metric("test loss", test_loss, step=count)
+                        mlflow.log_metric("accuracy", accuracy, step=count)
+                        mlflow.log_metric("precision", precision, step=count)
+                        mlflow.log_metric("recall", recall, step=count)
+                        mlflow.log_metric("f1 macro", f1, step=count)
 
         if plot:
             plot_losses(
