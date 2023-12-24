@@ -21,6 +21,7 @@ mlruns/
 models/
 outputs/
 parts/
+results/
 sdist/
 var/
 wheels/

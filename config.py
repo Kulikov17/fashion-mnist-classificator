@@ -6,6 +6,8 @@ class Files:
     dataset_dir: str
     models_dir: str
     model_filename: str
+    results_dir: str
+    results_filename: str
 
 
 @dataclass

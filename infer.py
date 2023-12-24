@@ -1,4 +1,7 @@
+import os
+
 import hydra
+import pandas as pd
 import torch
 from config import FashionConfig
 from hydra.core.config_store import ConfigStore
@@ -26,7 +29,10 @@ def main(cfg: FashionConfig) -> None:
         cfg.files.dataset_dir, model, device, cfg.params.batch_size
     )
 
-    print(y_true, y_pred)
+    df = pd.DataFrame(data={"y_true": y_true, "y_pred": y_pred})
+    os.makedirs(cfg.files.results_dir, exist_ok=True)
+    result_filename = cfg.files.results_dir + cfg.files.results_filename
+    df.to_csv(result_filename)
 
 
 if __name__ == "__main__":

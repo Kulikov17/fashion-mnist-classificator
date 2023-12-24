@@ -10,6 +10,7 @@ packages = [{include = "fashion-mnist-classificator"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+pandas = "^2.1.3"
 torch = "^2.1.0"
 torchvision = "^0.16.0"
 scikit-learn = "^1.2.2"

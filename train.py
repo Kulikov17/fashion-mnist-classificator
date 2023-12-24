@@ -24,6 +24,8 @@ def main(cfg: FashionConfig) -> None:
     use_cude = cfg.can_use_cuda and torch.cuda.is_available()
     device = torch.device("cuda:0" if use_cude else "cpu")
 
+    os.system("dvc pull")
+
     model = FashionCNN()
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.params.lr)

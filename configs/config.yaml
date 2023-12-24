@@ -5,6 +5,8 @@ files:
   dataset_dir: './data/'
   models_dir: './models/'
   model_filename: 'model.pt'
+  results_dir: './results/'
+  results_filename: 'result.csv'
 
 params:
   seed: 42
