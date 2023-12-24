@@ -25,6 +25,7 @@ def main(cfg: FashionConfig) -> None:
     device = torch.device("cuda:0" if use_cude else "cpu")
 
     os.system("dvc pull")
+    print("START TRAIN, please wait...")
 
     model = FashionCNN()
     criterion = nn.CrossEntropyLoss()
