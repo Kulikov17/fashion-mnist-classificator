@@ -1,14 +1,16 @@
 import torch
 import torchvision
 
-from .transforms import TRANSFORMS
+from .transforms import get_image_transform
 
 
 def inference(dataset_path, model, device, batch_size):
     model.to(device)
 
+    transform = get_image_transform()
+
     test_set = torchvision.datasets.FashionMNIST(
-        dataset_path, train=False, transform=TRANSFORMS
+        dataset_path, train=False, transform=transform
     )
 
     test_loader = torch.utils.data.DataLoader(

@@ -3,7 +3,7 @@ import torch
 import torchvision
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
-from .transforms import TRANSFORMS
+from .transforms import get_image_transform
 from .visualizers import plot_losses
 
 
@@ -29,10 +29,13 @@ class Fitter(object):
         self.model.to(device)
 
     def fit(self, dataset_path, plot=False):
-        train_set = torchvision.datasets.FashionMNIST(dataset_path, transform=TRANSFORMS)
+        transform = get_image_transform()
+
+        train_set = torchvision.datasets.FashionMNIST(dataset_path,
+                                                      transform=transform)
 
         test_set = torchvision.datasets.FashionMNIST(
-            dataset_path, train=False, transform=TRANSFORMS
+            dataset_path, train=False, transform=transform
         )
 
         train_loader = torch.utils.data.DataLoader(
