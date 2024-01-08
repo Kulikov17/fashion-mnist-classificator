@@ -3,7 +3,7 @@ import os
 import hydra
 import pandas as pd
 import torch
-from config import FashionConfig
+from configs.config import FashionConfig
 from hydra.core.config_store import ConfigStore
 
 from fashion.classifier import FashionCNN

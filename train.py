@@ -4,7 +4,7 @@ from pathlib import Path
 import hydra
 import mlflow
 import torch
-from config import FashionConfig
+from configs.config import FashionConfig
 from hydra.core.config_store import ConfigStore
 from mlflow.utils.git_utils import get_git_branch, get_git_commit
 from torch import nn
