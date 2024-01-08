@@ -18,8 +18,8 @@ cs.store(name="fashion_config", node=FashionConfig)
 def main(cfg: FashionConfig) -> None:
     torch.manual_seed(cfg.params.seed)
 
-    use_cude = cfg.can_use_cuda and torch.cuda.is_available()
-    device = torch.device("cuda:0" if use_cude else "cpu")
+    use_cuda = cfg.can_use_cuda and torch.cuda.is_available()
+    device = torch.device("cuda:0" if use_cuda else "cpu")
 
     model = FashionCNN()
     model_filename = cfg.files.models_dir + cfg.files.model_filename
