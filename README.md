@@ -13,7 +13,7 @@ Required: Python >=3.10
 4. `python train.py` - train model
 5. `python infer.py` - inference model (on test dataset from MNIST). Results will be save in a csv file
 
-Parameters for training can be changed in `config.yaml`.
+Parameters for training can be changed in `config.yaml`
 
 If you want to view logs in mlflow, run the command in another terminal:
 
