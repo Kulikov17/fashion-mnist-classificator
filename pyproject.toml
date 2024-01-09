@@ -6,7 +6,7 @@ authors = ["Dmitry Kulikov <dakulikov2001@mail.ru>"]
 readme = "README.md"
 repository = "https://github.com/Kulikov17/fashion-mnist-classificator"
 keywords = ["fashion", "mnist", "cv", "deep learning"]
-packages = [{include = "fashion-mnist-classificator"}]
+packages = [{include = "fashion"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

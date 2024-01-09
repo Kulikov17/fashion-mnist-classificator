@@ -4,8 +4,8 @@ defaults:
 files:
   dataset_dir: './data/'
   models_dir: './models/'
-  model_filename: 'model.pt'
-  results_dir: './results/'
+  model_filename: 'fashion-classifactor.pt'
+  results_dir: './data/results/'
   results_filename: 'result.csv'
 
 params:

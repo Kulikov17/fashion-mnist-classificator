@@ -1,0 +1,5 @@
+outs:
+- md5: c8b2f8c19239ae12888bdc183c25ad45
+  size: 118602
+  hash: md5
+  path: fashion-classifactor.pt

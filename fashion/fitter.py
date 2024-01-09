@@ -31,8 +31,7 @@ class Fitter(object):
     def fit(self, dataset_path, plot=False):
         transform = get_image_transform()
 
-        train_set = torchvision.datasets.FashionMNIST(dataset_path,
-                                                      transform=transform)
+        train_set = torchvision.datasets.FashionMNIST(dataset_path, transform=transform)
 
         test_set = torchvision.datasets.FashionMNIST(
             dataset_path, train=False, transform=transform
