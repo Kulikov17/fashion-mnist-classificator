@@ -10,7 +10,7 @@ from mlflow.utils.git_utils import get_git_branch, get_git_commit
 from torch import nn
 
 from fashion.classifier import FashionCNN
-from fashion.fitter import Fitter
+from fashion.trainer import Trainer
 
 
 cs = ConfigStore.instance()
@@ -30,7 +30,7 @@ def main(cfg: FashionConfig) -> None:
     model = FashionCNN()
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=cfg.params.lr)
-    fitter = Fitter(
+    trainer = Trainer(
         model,
         optimizer,
         criterion,
@@ -48,16 +48,16 @@ def main(cfg: FashionConfig) -> None:
         with mlflow.start_run(
             experiment_id=experiment_id, run_name=cfg.mlflow_params.run_name
         ):
-            fitter.fit(cfg.files.dataset_dir)
+            trainer.fit(cfg.files.dataset_dir)
             mlflow.log_param("git commit id", get_git_commit(Path.cwd()))
             mlflow.log_param("git branch", get_git_branch(Path.cwd()))
             mlflow.log_params(dict(cfg.params))
     else:
-        fitter.fit(cfg.files.dataset_dir, plot=True)
+        trainer.fit(cfg.files.dataset_dir, plot=True)
 
     os.makedirs(cfg.files.models_dir, exist_ok=True)
     model_filename = cfg.files.models_dir + cfg.files.model_filename
-    torch.save(fitter.model.state_dict(), model_filename)
+    torch.save(trainer.model.state_dict(), model_filename)
 
 
 if __name__ == "__main__":

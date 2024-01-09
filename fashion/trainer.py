@@ -7,7 +7,7 @@ from .transforms import get_image_transform
 from .visualizers import plot_losses
 
 
-class Fitter(object):
+class Trainer(object):
     def __init__(
         self,
         model,
